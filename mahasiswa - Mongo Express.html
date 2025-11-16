@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<!-- saved from url=(0119)http://localhost:8081/db/Siakam/mahasiswa?query=%7B%22ipk%22%3A+%7B%22%24gt%22%3A+3.5%7D%7D&projection=&runAggregate=on -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--<base href="/">--><base href=".">
+  
+  <title>mahasiswa - Mongo Express</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="./mahasiswa - Mongo Express_files/bootstrap.min.css" rel="stylesheet">
+  <link href="./mahasiswa - Mongo Express_files/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="./mahasiswa - Mongo Express_files/style.css" rel="stylesheet">
+
+  <link rel="prefetch" href="http://localhost:8081/public/img/gears.gif">
+
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+    .sidebar-nav {
+      padding: 9px 0;
+    }
+    .sidebar-nav a {
+      display: inline-block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .tooltip-inner {
+      max-width: 500px;
+    }
+  </style>
+
+  
+<link href="./mahasiswa - Mongo Express_files/codemirror.css" rel="stylesheet">
+
+
+<link href="./mahasiswa - Mongo Express_files/rubyblue.css" rel="stylesheet">
+
+
+<style type="text/css">
+  .modal-body .CodeMirror .CodeMirror-scroll {
+    height: 100%;
+  }
+
+  .tab-pane > form {
+    padding-bottom: 5px;
+  }
+
+  .sorting-button {
+    white-space: nowrap;
+  }
+
+  @media (min-width: 992px) { /* meduim and up */
+    #advanced .form-group .btn {
+      height: 150px;
+    }
+  }
+
+  #indexes td {
+    vertical-align: middle;
+  }
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="logo-nav">
+        <a href="http://localhost:8081/">
+          <img src="./mahasiswa - Mongo Express_files/mongo-express-logo.png">
+        </a>
+      </div>
+      <a class="navbar-brand" href="http://localhost:8081/">Mongo Express</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+  <li>
+    <a href="http://localhost:8081/db/Siakam">Database:</a>
+  </li>
+  <li class="dropdown">
+    <a href="http://localhost:8081/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Siakam<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      
+      <li><a href="http://localhost:8081/db/Siakam/">Siakam</a></li>
+      
+      <li><a href="http://localhost:8081/db/admin/">admin</a></li>
+      
+      <li><a href="http://localhost:8081/db/config/">config</a></li>
+      
+      <li><a href="http://localhost:8081/db/dbmahasiswa/">dbmahasiswa</a></li>
+      
+      <li><a href="http://localhost:8081/db/local/">local</a></li>
+      
+    </ul>
+  </li>
+  <li>
+    <a href="http://localhost:8081/db/Siakam"><span class="glyphicon glyphicon-chevron-right"></span></a>
+  </li>
+  <li>
+    <a href="http://localhost:8081/db/Siakam/mahasiswa">Collection:</a>
+  </li>
+  <li class="dropdown">
+    <a href="http://localhost:8081/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">mahasiswa<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      
+      <li><a href="http://localhost:8081/db/Siakam/delete_me">delete_me</a></li>
+      
+      <li><a href="http://localhost:8081/db/Siakam/mah">mah</a></li>
+      
+      <li><a href="http://localhost:8081/db/Siakam/mahasiswa">mahasiswa</a></li>
+      
+    </ul>
+  </li>
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header main-title">
+        <h1 id="pageTitle">Viewing Collection: mahasiswa</h1>
+      </div>
+
+      
+
+      
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      
+  
+    <p>
+      <button type="button" data-toggle="modal" data-target="#addDocument" class="btn btn-success btn-large">
+        <span class="glyphicon glyphicon-pencil"></span>
+        New Document
+      </button>
+      <button type="button" data-toggle="modal" data-target="#addIndex" class="btn btn-success btn-large">
+        <span class="glyphicon glyphicon-pencil"></span>
+        New Index
+      </button>
+    </p>
+  
+
+  <ul id="tabs" class="nav nav-pills nav-justified" data-tabs="tabs">
+    <li class=""><a href="http://localhost:8081/#simple" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-tag"></span>  Simple</a></li>
+    <li class="active"><a href="http://localhost:8081/#advanced" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-tags"></span>  Advanced</a></li>
+  </ul>
+  <div id="my-tab-content" class="tab-content">
+    <div class="tab-pane" id="simple">
+      <form class="well" method="get" action="http://localhost:8081/db/Siakam/mahasiswa">
+        
+          <input type="checkbox" name="sort[_id]" class="hide sort-_id">
+        
+          <input type="checkbox" name="sort[nim]" class="hide sort-nim">
+        
+          <input type="checkbox" name="sort[nama_depan]" class="hide sort-nama_depan">
+        
+          <input type="checkbox" name="sort[nama_belakang]" class="hide sort-nama_belakang">
+        
+          <input type="checkbox" name="sort[tanggal_lahir]" class="hide sort-tanggal_lahir">
+        
+          <input type="checkbox" name="sort[email]" class="hide sort-email">
+        
+          <input type="checkbox" name="sort[program_studi]" class="hide sort-program_studi">
+        
+          <input type="checkbox" name="sort[semester]" class="hide sort-semester">
+        
+          <input type="checkbox" name="sort[status]" class="hide sort-status">
+        
+          <input type="checkbox" name="sort[ipk]" class="hide sort-ipk">
+        
+          <input type="checkbox" name="sort[mata_kuliah_diambil]" class="hide sort-mata_kuliah_diambil">
+        
+          <input type="checkbox" name="sort[prestasi]" class="hide sort-prestasi">
+        
+          <input type="checkbox" name="sort[create_at]" class="hide sort-create_at">
+        
+          <input type="checkbox" name="sort[update_at]" class="hide sort-update_at">
+        
+      <div class="row">
+        <div class="form-group col-sm-6 col-md-4">
+          <input style="width:100%;" class="input-medium form-control" type="text" id="key" name="key" placeholder="Key" title="Key" value="">
+        </div>
+        <div class="form-group col-sm-6 col-md-4">
+          <input style="width:100%;" class="input-medium form-control" type="text" id="value" name="value" placeholder="Value" title="Value" value="">
+        </div>
+        <div class="form-group col-sm-6 col-md-2">
+          <select name="type" class="form-control">
+            <option value="S">String</option>
+            <option value="R">Regex</option>
+            <option value="J">JSON, bool</option>
+            <option value="N">Number</option>
+            <option value="O">ObjectId</option>
+            <option value="U">UUID (v4)</option>
+          </select>
+        </div>
+        <div class="form-group col-sm-6 col-md-2">
+          <button type="submit" class="btn btn-primary btn-block">
+            <span class="glyphicon glyphicon-search"></span>
+            Find
+          </button>
+        </div>
+      </div>
+      </form>
+    </div>
+    <div class="tab-pane active" id="advanced">
+      <form class="well" method="get" action="http://localhost:8081/db/Siakam/mahasiswa">
+        
+          <input type="checkbox" name="sort[_id]" class="hide sort-_id">
+        
+          <input type="checkbox" name="sort[nim]" class="hide sort-nim">
+        
+          <input type="checkbox" name="sort[nama_depan]" class="hide sort-nama_depan">
+        
+          <input type="checkbox" name="sort[nama_belakang]" class="hide sort-nama_belakang">
+        
+          <input type="checkbox" name="sort[tanggal_lahir]" class="hide sort-tanggal_lahir">
+        
+          <input type="checkbox" name="sort[email]" class="hide sort-email">
+        
+          <input type="checkbox" name="sort[program_studi]" class="hide sort-program_studi">
+        
+          <input type="checkbox" name="sort[semester]" class="hide sort-semester">
+        
+          <input type="checkbox" name="sort[status]" class="hide sort-status">
+        
+          <input type="checkbox" name="sort[ipk]" class="hide sort-ipk">
+        
+          <input type="checkbox" name="sort[mata_kuliah_diambil]" class="hide sort-mata_kuliah_diambil">
+        
+          <input type="checkbox" name="sort[prestasi]" class="hide sort-prestasi">
+        
+          <input type="checkbox" name="sort[create_at]" class="hide sort-create_at">
+        
+          <input type="checkbox" name="sort[update_at]" class="hide sort-update_at">
+        
+        <div class="row">
+          <div class="form-group col-sm-6 col-md-5">
+            <textarea class="input-medium form-control" style="width: 100%; height: 150px" id="query" name="query" placeholder="Query" title="Query">{"ipk": {"$gt": 3.5}}</textarea>
+          </div>
+          <div class="form-group col-sm-6 col-md-5">
+            <textarea class="input-medium form-control" style="width: 100%; height: 150px" id="projection" name="projection" placeholder="Projection" title="Projection"></textarea>
+          </div>
+          <div class="col-md-2">
+            <div class="row">
+              <input type="checkbox" id="runAggregate" name="runAggregate" title="Run Aggregate" checked="checked">
+              <label for="runAggregate">Aggregate query</label>
+            </div>
+            <div class="row">
+            <button style="height:120px;" type="submit" class="btn btn-primary btn-block">
+              <span class="glyphicon glyphicon-search"></span>
+            Find
+            </button>
+          </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <p>
+    </p><form id="deleteListForm" method="POST" style="display:inline;" action="http://localhost:8081/db/Siakam/mahasiswa?key=&amp;value=&amp;type=&amp;query={%22ipk%22:%20{%22$gt%22:%203.5}}&amp;projection=&amp;runAggregate=true">
+      
+      <input type="hidden" name="_method" value="delete">
+      <button type="button" data-toggle="modal" data-target="#deleteListModal" class="btn btn-danger btn-large btn-block">
+        <span class="glyphicon glyphicon-trash"></span>
+        Delete all 4 documents retrieved
+      </button>
+    </form>
+  <p></p>
+  
+  <br>
+
+<!-- Add Document Modal -->
+  <div class="modal fade" id="addDocument" role="dialog" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form id="addDocumentForm" method="post" action="http://localhost:8081/db/Siakam/mahasiswa">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h2>Add Document</h2>
+      </div>
+      <div class="modal-body" id="document-modal-body">
+        <textarea id="document" name="document" style="display: none;">{
+        "_id": ObjectId()
+}</textarea><div class="CodeMirror cm-s-rubyblue"><div style="overflow: hidden; position: relative; width: 3px; height: 0px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-width: 3px;"><div style="position: relative;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"><pre class="CodeMirror-line" role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-string cm-property">"_id"</span>: <span class="cm-variable">ObjectId</span>()</span></pre></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"></div><div class="CodeMirror-code" role="presentation"></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px;"></div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 1px;"></div></div></div></div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-error" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success" onclick="return checkValidJSON()">
+          <span class="glyphicon glyphicon-pencil"></span>
+          Save
+        </button>
+      </div>
+
+    </form>
+    </div>
+    </div>
+  </div>
+<!-- End Add Document Modal -->
+
+<!-- Add Index Modal -->
+<div class="modal fade" id="addIndex" role="dialog" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form id="addIndexForm" method="post" action="http://localhost:8081/db/Siakam/addIndex/mahasiswa">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h2>Add Indexes</h2>
+        <span>
+          A document that contains the field and value pairs where the field
+          is the index key. 1 for an ascending and -1 for a descending index.
+        </span>
+      </div>
+      <div class="modal-body" id="index-modal-body">
+        <textarea id="index" name="index" style="display: none;">{
+        "key": 1
+}</textarea><div class="CodeMirror cm-s-rubyblue"><div style="overflow: hidden; position: relative; width: 3px; height: 0px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true"><div style="min-width: 1px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true"><div style="height: 100%; min-height: 1px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-width: 3px;"><div style="position: relative;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"><pre class="CodeMirror-line" role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-string cm-property">"key"</span>: <span class="cm-number">1</span></span></pre></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"></div><div class="CodeMirror-code" role="presentation"></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px;"></div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 1px;"></div></div></div></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-error" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success" onclick="return checkValidIndexJSON()">
+             <span class="glyphicon glyphicon-pencil"></span>
+          Save
+        </button>
+      </div>
+
+    </form>
+    </div>
+    </div>
+  </div>
+<!-- End Add Index Modal -->
+
+
+  
+
+  
+
+  <div class="fadeToWhite" id="fadeToWhiteID" style="height: 769.25px;"></div>
+  <div class="table-responsive tableWrapper" style="cursor:auto">
+    <table class="table table-striped tableHeaderFooterBars">
+      <thead>
+        
+          <tr><th class="sorting-button" data-column="_id" data-direction="undefined" title="Sort by _id">
+            _id
+            
+          </th>
+        
+          <th class="sorting-button" data-column="nim" data-direction="undefined" title="Sort by nim">
+            nim
+            
+          </th>
+        
+          <th class="sorting-button" data-column="nama_depan" data-direction="undefined" title="Sort by nama_depan">
+            nama_depan
+            
+          </th>
+        
+          <th class="sorting-button" data-column="nama_belakang" data-direction="undefined" title="Sort by nama_belakang">
+            nama_belakang
+            
+          </th>
+        
+          <th class="sorting-button" data-column="tanggal_lahir" data-direction="undefined" title="Sort by tanggal_lahir">
+            tanggal_lahir
+            
+          </th>
+        
+          <th class="sorting-button" data-column="email" data-direction="undefined" title="Sort by email">
+            email
+            
+          </th>
+        
+          <th class="sorting-button" data-column="program_studi" data-direction="undefined" title="Sort by program_studi">
+            program_studi
+            
+          </th>
+        
+          <th class="sorting-button" data-column="semester" data-direction="undefined" title="Sort by semester">
+            semester
+            
+          </th>
+        
+          <th class="sorting-button" data-column="status" data-direction="undefined" title="Sort by status">
+            status
+            
+          </th>
+        
+          <th class="sorting-button" data-column="ipk" data-direction="undefined" title="Sort by ipk">
+            ipk
+            
+          </th>
+        
+          <th class="sorting-button" data-column="mata_kuliah_diambil" data-direction="undefined" title="Sort by mata_kuliah_diambil">
+            mata_kuliah_diambil
+            
+          </th>
+        
+          <th class="sorting-button" data-column="prestasi" data-direction="undefined" title="Sort by prestasi">
+            prestasi
+            
+          </th>
+        
+          <th class="sorting-button" data-column="create_at" data-direction="undefined" title="Sort by create_at">
+            create_at
+            
+          </th>
+        
+          <th class="sorting-button" data-column="update_at" data-direction="undefined" title="Sort by update_at">
+            update_at
+            
+          </th>
+        
+      </tr></thead>
+      
+        
+        <tbody><tr id="doc-0" onclick="loadDocument(&#39;/db/Siakam/mahasiswa/%2269158f2f42029b9f8bdc683f%22?skip=0&#39;)">
+        
+          
+            <td><div class="tableContent">
+              
+                <button class="btn btn-info" onclick="loadDocument(&#39;/db/Siakam/mahasiswa/%2269158f2f42029b9f8bdc683f%22&#39;)">
+                  <span class="glyphicon glyphicon-link"></span>
+                </button>
+                <form class="deleteButtonDocument" method="POST" style="display:inline;" action="http://localhost:8081/db/Siakam/mahasiswa/%2269158f2f42029b9f8bdc683f%22?subtype=&amp;skip=0&amp;key=&amp;value=&amp;type=&amp;query={%22ipk%22:%20{%22$gt%22:%203.5}}&amp;projection=">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                </form>
+              
+              
+                69158f2f42029b9f8bdc683f
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2024101
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Gilang
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Ramadhan
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2004-12-03
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                gilang.r@universitas.ac.id
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                <pre><pre class="renderjson"><span><span class="object" style="display: none;"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">3 items</a><span class="object syntax">}</span></span><span class="object" style="display: inline;"><a class="disclosure" href="http://localhost:8081/#">⊖</a><span class="object syntax">{</span><span>
+</span><span>    </span><span class="key">"kode"</span><span class="object syntax">: </span><span></span><span class="string">"SI"</span><span class="syntax">,</span>
+<span>    </span><span class="key">"nama"</span><span class="object syntax">: </span><span></span><span class="string">"Sastra Inggris"</span><span class="syntax">,</span>
+<span>    </span><span class="key">"fakultas"</span><span class="object syntax">: </span><span></span><span class="string">"FIB"</span>
+<span></span><span class="object syntax">}</span></span></span></pre></pre>
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Lulus
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                3.85
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                <pre><pre class="renderjson"><span><span class="array" style="display: none;"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="array syntax">[</span><a href="http://localhost:8081/#">2 items</a><span class="array syntax">]</span></span><span class="array" style="display: inline;"><a class="disclosure" href="http://localhost:8081/#">⊖</a><span class="array syntax">[</span><span>
+</span><span>   <span class="object"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">4 items</a><span class="object syntax">}</span></span></span><span class="syntax">,</span>
+<span>   <span class="object"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">4 items</a><span class="object syntax">}</span></span></span>
+<span></span><span class="array syntax">]</span></span></span></pre></pre>
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Juara 1 Lomba Pidato Bahasa Inggris,Anggota English Club
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2024-02-15T09:00:00Z
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2025-05-10T12:00:00Z
+              
+            </div></td>
+          
+        </tr>
+      
+        
+        <tr id="doc-1" onclick="loadDocument(&#39;/db/Siakam/mahasiswa/%2269158f4b42029b9f8bdc6840%22?skip=0&#39;)">
+        
+          
+            <td><div class="tableContent">
+              
+                <button class="btn btn-info" onclick="loadDocument(&#39;/db/Siakam/mahasiswa/%2269158f4b42029b9f8bdc6840%22&#39;)">
+                  <span class="glyphicon glyphicon-link"></span>
+                </button>
+                <form class="deleteButtonDocument" method="POST" style="display:inline;" action="http://localhost:8081/db/Siakam/mahasiswa/%2269158f4b42029b9f8bdc6840%22?subtype=&amp;skip=0&amp;key=&amp;value=&amp;type=&amp;query={%22ipk%22:%20{%22$gt%22:%203.5}}&amp;projection=">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                </form>
+              
+              
+                69158f4b42029b9f8bdc6840
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2022202
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Hana
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Wulandari
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2001-07-28
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                hana.w@universitas.ac.id
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                <pre><pre class="renderjson"><span><span class="object" style="display: none;"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">3 items</a><span class="object syntax">}</span></span><span class="object" style="display: inline;"><a class="disclosure" href="http://localhost:8081/#">⊖</a><span class="object syntax">{</span><span>
+</span><span>    </span><span class="key">"kode"</span><span class="object syntax">: </span><span></span><span class="string">"TM"</span><span class="syntax">,</span>
+<span>    </span><span class="key">"nama"</span><span class="object syntax">: </span><span></span><span class="string">"Teknik Mesin"</span><span class="syntax">,</span>
+<span>    </span><span class="key">"fakultas"</span><span class="object syntax">: </span><span></span><span class="string">"FTI"</span>
+<span></span><span class="object syntax">}</span></span></span></pre></pre>
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                7
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Lulus
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                3.55
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                <pre><pre class="renderjson"><span><span class="array" style="display: none;"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="array syntax">[</span><a href="http://localhost:8081/#">2 items</a><span class="array syntax">]</span></span><span class="array" style="display: inline;"><a class="disclosure" href="http://localhost:8081/#">⊖</a><span class="array syntax">[</span><span>
+</span><span>   <span class="object"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">4 items</a><span class="object syntax">}</span></span></span><span class="syntax">,</span>
+<span>   <span class="object"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">4 items</a><span class="object syntax">}</span></span></span>
+<span></span><span class="array syntax">]</span></span></span></pre></pre>
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Asisten Lab Konversi Energi,Merancang Prototipe Alat Otomasi
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2022-09-01T10:00:00Z
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2025-03-22T14:00:00Z
+              
+            </div></td>
+          
+        </tr>
+      
+        
+        <tr id="doc-2" onclick="loadDocument(&#39;/db/Siakam/mahasiswa/%2269158f7042029b9f8bdc6841%22?skip=0&#39;)">
+        
+          
+            <td><div class="tableContent">
+              
+                <button class="btn btn-info" onclick="loadDocument(&#39;/db/Siakam/mahasiswa/%2269158f7042029b9f8bdc6841%22&#39;)">
+                  <span class="glyphicon glyphicon-link"></span>
+                </button>
+                <form class="deleteButtonDocument" method="POST" style="display:inline;" action="http://localhost:8081/db/Siakam/mahasiswa/%2269158f7042029b9f8bdc6841%22?subtype=&amp;skip=0&amp;key=&amp;value=&amp;type=&amp;query={%22ipk%22:%20{%22$gt%22:%203.5}}&amp;projection=">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                </form>
+              
+              
+                69158f7042029b9f8bdc6841
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2021303
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Irfan
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Maulana
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2000-01-18
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                irfan.m@universitas.ac.id
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                <pre><pre class="renderjson"><span><span class="object" style="display: none;"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">3 items</a><span class="object syntax">}</span></span><span class="object" style="display: inline;"><a class="disclosure" href="http://localhost:8081/#">⊖</a><span class="object syntax">{</span><span>
+</span><span>    </span><span class="key">"kode"</span><span class="object syntax">: </span><span></span><span class="string">"KD"</span><span class="syntax">,</span>
+<span>    </span><span class="key">"nama"</span><span class="object syntax">: </span><span></span><span class="string">"Kedokteran"</span><span class="syntax">,</span>
+<span>    </span><span class="key">"fakultas"</span><span class="object syntax">: </span><span></span><span class="string">"FK"</span>
+<span></span><span class="object syntax">}</span></span></span></pre></pre>
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                9
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Lulus
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                3.68
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                <pre><pre class="renderjson"><span><span class="array" style="display: none;"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="array syntax">[</span><a href="http://localhost:8081/#">2 items</a><span class="array syntax">]</span></span><span class="array" style="display: inline;"><a class="disclosure" href="http://localhost:8081/#">⊖</a><span class="array syntax">[</span><span>
+</span><span>   <span class="object"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">4 items</a><span class="object syntax">}</span></span></span><span class="syntax">,</span>
+<span>   <span class="object"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">4 items</a><span class="object syntax">}</span></span></span>
+<span></span><span class="array syntax">]</span></span></span></pre></pre>
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Relawan Medis Bencana,Peserta Konferensi Kesehatan Nasional
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2021-09-01T10:00:00Z
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2025-10-10T16:00:00Z
+              
+            </div></td>
+          
+        </tr>
+      
+        
+        <tr id="doc-3" onclick="loadDocument(&#39;/db/Siakam/mahasiswa/%2269158fb042029b9f8bdc6843%22?skip=0&#39;)">
+        
+          
+            <td><div class="tableContent">
+              
+                <button class="btn btn-info" onclick="loadDocument(&#39;/db/Siakam/mahasiswa/%2269158fb042029b9f8bdc6843%22&#39;)">
+                  <span class="glyphicon glyphicon-link"></span>
+                </button>
+                <form class="deleteButtonDocument" method="POST" style="display:inline;" action="http://localhost:8081/db/Siakam/mahasiswa/%2269158fb042029b9f8bdc6843%22?subtype=&amp;skip=0&amp;key=&amp;value=&amp;type=&amp;query={%22ipk%22:%20{%22$gt%22:%203.5}}&amp;projection=">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                </form>
+              
+              
+                69158fb042029b9f8bdc6843
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2022505
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Kurnia
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Adi
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2002-04-29
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                kurnia.a@universitas.ac.id
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                <pre><pre class="renderjson"><span><span class="object" style="display: none;"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">3 items</a><span class="object syntax">}</span></span><span class="object" style="display: inline;"><a class="disclosure" href="http://localhost:8081/#">⊖</a><span class="object syntax">{</span><span>
+</span><span>    </span><span class="key">"kode"</span><span class="object syntax">: </span><span></span><span class="string">"HK"</span><span class="syntax">,</span>
+<span>    </span><span class="key">"nama"</span><span class="object syntax">: </span><span></span><span class="string">"Hukum"</span><span class="syntax">,</span>
+<span>    </span><span class="key">"fakultas"</span><span class="object syntax">: </span><span></span><span class="string">"FH"</span>
+<span></span><span class="object syntax">}</span></span></span></pre></pre>
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                7
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Lulus
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                3.7
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                <pre><pre class="renderjson"><span><span class="array" style="display: none;"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="array syntax">[</span><a href="http://localhost:8081/#">2 items</a><span class="array syntax">]</span></span><span class="array" style="display: inline;"><a class="disclosure" href="http://localhost:8081/#">⊖</a><span class="array syntax">[</span><span>
+</span><span>   <span class="object"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">4 items</a><span class="object syntax">}</span></span></span><span class="syntax">,</span>
+<span>   <span class="object"><a class="disclosure" href="http://localhost:8081/#">⊕</a><span class="object syntax">{</span><a href="http://localhost:8081/#">4 items</a><span class="object syntax">}</span></span></span>
+<span></span><span class="array syntax">]</span></span></span></pre></pre>
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                Juara 3 Lomba Moot Court,Anggota UKM Debat Hukum
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2022-09-01T10:00:00Z
+              
+            </div></td>
+          
+            <td><div class="tableContent">
+              
+              
+                2025-05-01T13:00:00Z
+              
+            </div></td>
+          
+        </tr>
+      
+    </tbody></table>
+  </div>
+
+  
+
+  
+
+  <div class="row">
+    
+      <div class="col-md-12">
+        <h2>Rename Collection</h2>
+        <form method="POST" action="http://localhost:8081/db/Siakam/mahasiswa" class="well form-inline">
+          <input type="hidden" name="_method" value="put">
+          <div class="form-group">
+            <span class="add-on">Siakam . </span>
+            <input class="form-control" type="text" id="collection" name="collection" placeholder="mahasiswa">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Rename
+          </button>
+        </form>
+      </div>
+    
+
+  </div>
+  <h2>Tools</h2>
+  <div class="row">
+    
+      <div class="col-sm-4">
+        <div class="well">
+          <a href="http://localhost:8081/db/Siakam/export/mahasiswa?key=&amp;value=&amp;type=&amp;query=%7B%22ipk%22%3A%20%7B%22%24gt%22%3A%203.5%7D%7D&amp;projection=" class="btn btn-warning btn-block">
+            <span class="glyphicon glyphicon-floppy-save"></span><br>Export Standard
+          </a>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="well">
+          <a href="http://localhost:8081/db/Siakam/expArr/mahasiswa?key=&amp;value=&amp;type=&amp;query=%7B%22ipk%22%3A%20%7B%22%24gt%22%3A%203.5%7D%7D&amp;projection=" class="btn btn-warning btn-block">
+            <span class="glyphicon glyphicon-floppy-save"></span><br>Export --jsonArray
+          </a>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="well">
+          <a href="http://localhost:8081/db/Siakam/expCsv/mahasiswa?key=&amp;value=&amp;type=&amp;query=%7B%22ipk%22%3A%20%7B%22%24gt%22%3A%203.5%7D%7D&amp;projection=" class="btn btn-warning btn-block">
+            <span class="glyphicon glyphicon-floppy-save"></span><br>Export --csv
+          </a>
+        </div>
+      </div>
+    
+
+    <div class="col-sm-4">
+      <div class="well">
+        <a href="http://localhost:8081/db/Siakam/reIndex/mahasiswa" class="btn btn-warning btn-block">
+          <span class="glyphicon glyphicon-resize-small"></span><br>Reindex
+        </a>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="well">
+        <a class="btn btn-warning btn-block import-file-link">
+          <span class="glyphicon glyphicon-cloud-upload"></span><br>Import --mongoexport json
+        </a>
+        <input class="input-hidden import-input-file" type="file" name="import-file" collection-name="mahasiswa">
+      </div>
+    </div>
+
+    
+      <div class="col-sm-4">
+        <div class="well">
+          <a href="http://localhost:8081/db/Siakam/compact/mahasiswa" class="btn btn-danger btn-block">
+            <span class="glyphicon glyphicon-resize-small"></span><br>Compact
+          </a>
+        </div>
+      </div>
+    
+      <div class="col-sm-4">
+        <form method="POST" action="http://localhost:8081/db/Siakam/mahasiswa" class="well">
+        
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" class="hidden">
+          <button type="button" class="btn btn-danger deleteButtonCollection btn-block" collection-name="mahasiswa" data-original-title="" title="">
+            <span class="glyphicon glyphicon-trash"></span><br>Delete
+          </button>
+        </form>
+      </div>
+
+      <div id="confirm-deletion-document" class="modal fade" role="dialog" aria-labelledby="confirmDeletionDocumentLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              Are you sure?
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-danger" id="delete">Delete</button>
+              <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="deleteListModal" class="modal fade" role="dialog" aria-labelledby="confirmDeletionListLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              Are you sure you want to delete all 4 documents?
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-danger" id="deleteListConfirmButton">Delete</button>
+              <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="confirm-deletion-collection" class="modal fade" role="dialog" aria-labelledby="confirmDeletionCollectionLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="myModalLabel">Delete collection</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                Be careful! You are about to delete whole <strong><span id="modal-collection-name"></span></strong> collection.
+              </p>
+              <p>
+                <label for="confirmation-input">Type the collection name to proceed.</label>
+                <input type="text" id="confirmation-input" name="confirmation-input" shouldbe="" value="">
+              </p>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-danger" id="delete">Delete</button>
+              <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    
+    
+
+  <div class="stats col-md-12">
+    <h2>Collection Stats</h2>
+    <table class="table table-bordered table-striped">
+      <tbody><tr>
+        <td>
+          <strong>Documents</strong>
+        </td>
+        <td>
+          5
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Total doc size</strong>
+        </td>
+        <td>
+          3.01 KB
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Average doc size</strong>
+        </td>
+        <td>
+          616 Bytes
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Pre-allocated size</strong>
+        </td>
+        <td>
+          36 KB
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Indexes</strong>
+        </td>
+        <td>
+          1
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Total index size</strong>
+        </td>
+        <td>
+          36 KB
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Padding factor</strong>
+        </td>
+        <td>
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Extents</strong>
+        </td>
+        <td>
+          
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <div class="col-md-12">
+    <h2>Indexes</h2>
+    <table id="indexes" class="table table-bordered table-striped">
+      <tbody><tr>
+        <th>Name</th>
+        <th>Columns</th>
+        <th>Size</th>
+        <th>Attributes</th>
+        <th>Actions</th>
+      </tr>
+    
+      <tr>
+        <td>
+          _id_
+        </td>
+        <td>
+          
+          <div>_id &nbsp;  ASC </div>
+          
+        </td>
+        <td>
+          36 KB
+        </td>
+        <td>
+          
+          <div></div>
+          
+          <div></div>
+          
+          <div></div>
+          
+          <div></div>
+          
+        </td>
+      
+        <td>
+          <a class="btn btn-danger" href="http://localhost:8081/db/Siakam/dropIndex/mahasiswa?name=_id_">
+            <span class="glyphicon glyphicon-trash"></span> &nbsp;DEL
+          </a>
+        </td>
+      
+      </tr>
+    
+    </tbody></table>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="./mahasiswa - Mongo Express_files/vendor-93f5fc3ae20e0dfd68cb.min.js.download"></script>
+<script type="text/javascript">
+
+window.ME_SETTINGS = {
+  readOnly: 'false' === 'true',
+  noDelete: 'false' === 'true',
+  codeMirrorEditorTheme: 'rubyblue',
+  baseHref: '/',
+  collapsibleJSON: 'true' === 'true',
+  collapsibleJSONDefaultUnfold: Number.parseInt('1', 10),
+  confirmDelete: 'false' === 'true',
+  dbName: 'Siakam',
+  collectionName: 'mahasiswa',
+  bucketName: '',
+  limit: '10',
+  skip: '0',
+  totalPages: Math.round('4' / '10')
+};
+</script>
+
+<script src="./mahasiswa - Mongo Express_files/codemirror-c3ecf01fea09ef4fd0c5.min.js.download"></script>
+<script src="./mahasiswa - Mongo Express_files/collection-70f10ba9e63af80d0f15.min.js.download"></script>
+
+
+
+</div></body></html>
